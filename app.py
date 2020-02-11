@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import re
 import requests
 import os
@@ -45,4 +45,4 @@ def getImage(keyword,num):
         file.close()
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=8080, )
