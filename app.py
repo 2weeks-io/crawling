@@ -37,12 +37,13 @@ def getImage(keyword,num, appName):
         photowall = bs_html.find('div',{"class":"photowall"})
         img_list = photowall.find_all("img",{"class":"_img"})
 
-        DIR = "../data" + makeSaveFilePath(appName)
+        #년월일시로 생성
+        DIR = makeSaveFilePath()
 
         #폴더가 없을 경우 폴더 생성
         if not os.path.exists(DIR):
                 #여러개의 폴더를 한번에 생성해줌
-                os.makedirs(DIR, exist_ok=True)
+                os.makedirs("/"+ appName+ DIR, exist_ok=True)
 
         #파일 이름 세팅
         basename = "crawImg"
@@ -59,7 +60,7 @@ def getImage(keyword,num, appName):
             filePath = DIR+"/" + filename + "_" + str(j) + str(i+1) + ".jpg"
             filePathList.append(filePath)
 
-            file = open(filePath,"wb")
+            file = open("../data" + "/" + appName + filePath,"wb")
             file.write(img_con)
             file.close()
 
@@ -67,9 +68,9 @@ def getImage(keyword,num, appName):
 
     return fileData
 
-def makeSaveFilePath(appName):
+def makeSaveFilePath():
     today = datetime.datetime.today()
-    path = "/" + appName + "/" + str(today.year) + "/" + str(today.month) + "/" + str(today.day)
+    path = "/" + str(today.year) + "/" + str(today.month) + "/" + str(today.day)
     return path
 
 if __name__ == '__main__':
