@@ -42,8 +42,9 @@ def getImage(keyword,num, appName):
 
         #폴더가 없을 경우 폴더 생성
         if not os.path.exists(DIR):
-                #여러개의 폴더를 한번에 생성해줌
-                os.makedirs("/"+ appName+ DIR, exist_ok=True)
+            print("/"+ appName+ DIR)
+            #여러개의 폴더를 한번에 생성해줌
+            os.makedirs("../data/"+ appName+ DIR, exist_ok=True)
 
         #파일 이름 세팅
         basename = "crawImg"
